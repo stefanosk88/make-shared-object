@@ -22,20 +22,20 @@ $ g++ -Wall -Werror -L/opt/lib/ main.cpp -lhelloworld -o hello_program
 $ ls  
 hello_program  lib_helloworld.cpp  lib_helloworld.h  lib_helloworld.o  main.cpp  
 
-### Run the executable. This is likely runtime error when running the executable for the first time.  
+### Run the executable. This is a likely runtime error when running the executable for the first time.  
 $ ./hello_program  
 ./hello_program: error while loading shared libraries: libhelloworld.so.1: cannot open shared object file: No such file or directory  
 $ ldd hello_program  
-  linux-vdso.so.1 (0x00007fff2abd7000)  
-  libhelloworld.so.1 => not found  
-  libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff5b9d79000)  
-  /lib64/ld-linux-x86-64.so.2 (0x00007ff5b9f85000)  
+	linux-vdso.so.1 (0x00007fff2abd7000)  
+	libhelloworld.so.1 => not found  
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff5b9d79000)  
+	/lib64/ld-linux-x86-64.so.2 (0x00007ff5b9f85000)  
 
 ### Add and export the shared object library path.  
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib/  
-export LD_LIBRARY_PATH  
+$ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/lib/  
+$ export LD_LIBRARY_PATH  
 $ ldd hello_program  
-  linux-vdso.so.1 (0x00007fff3f7b2000)  
+	linux-vdso.so.1 (0x00007fff3f7b2000)  
 	libhelloworld.so.1 => /opt/lib/libhelloworld.so.1 (0x00007fb936d3a000)  
 	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb936b35000)  
 	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fb936954000)  
